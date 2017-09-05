@@ -1,3 +1,5 @@
+package io.hotcool;
+
 public class ReverseInt{
   public int reverse(int x) {
          int result = 0;
