@@ -1,5 +1,7 @@
 package io.hotcool.structure;
 
+import java.util.HashMap;
+
 public class ListNodeProblems {
 
     public ListNode partition(ListNode head, int x) {
@@ -24,6 +26,29 @@ public class ListNodeProblems {
         return lesser.next;
     }
 
+    public ListNode deleteDuplicates(ListNode head) {
+        if(null == head)
+            return null;
+
+        ListNode tmp = new ListNode(0);
+
+        ListNode tail = tmp, cur = head;
+        while(null != cur){
+            if( null != cur.next && cur.next.val == cur.val){
+                int lastVal = cur.val;
+                while(null != cur && lastVal == cur.val)
+                    cur = cur.next;
+            }
+            else{
+                tail.next = cur;
+                tail = cur;
+                cur = cur.next;
+            }
+        }
+        tail.next = null;
+        return tmp.next;
+    }
+
     static class ListNode {
         int val;
         ListNode next;
@@ -42,7 +67,7 @@ public class ListNodeProblems {
 
         @Override
         public String toString() {
-            return String.valueOf(val) + this.next.val;
+            return String.valueOf(val) + this.next;
         }
     }
 }
