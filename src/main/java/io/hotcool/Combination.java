@@ -1,8 +1,6 @@
 package io.hotcool;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 public class Combination {
 
@@ -46,4 +44,26 @@ public class Combination {
         }
     }
 
+    public List<List<Integer>> subsetsWithDup(int[] nums) {
+        if(null == nums || 0 == nums.length)
+            return null;
+
+        Arrays.sort(nums);
+        Set<List<Integer>> result = new HashSet<>();
+        for(int i = 0; i < nums.length; ++i){
+            processD(0, new ArrayList<>(), result, nums);
+        }
+
+        return new ArrayList<>(result);
+    }
+
+    private void processD(int start, List<Integer> tmp, Set<List<Integer>> result, int[] nums){
+        result.add(new ArrayList<>(tmp));
+
+        for(int i = start; i < nums.length; ++i){
+            tmp.add(nums[i]);
+            processD(i + 1, tmp, result, nums);
+            tmp.remove(tmp.size() - 1);
+        }
+    }
 }
