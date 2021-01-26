@@ -49,6 +49,33 @@ public class ListNodeProblems {
         return tmp.next;
     }
 
+    public ListNode reverseBetween(ListNode head, int m, int n) {
+        if(m < 0 || n < 0)
+            return null;
+
+        ListNode fakeHead = new ListNode(-1, head);
+        ListNode tmp = fakeHead;
+        int i = 1;
+        //move to the place
+        while( i < m){
+            tmp = tmp.next;
+            ++i;
+        }
+        ListNode cur = tmp.next;
+        ListNode next = null, prev = null;
+        while (i <= n){
+            next = cur.next;
+            cur.next = prev;
+            prev = cur;
+            cur = next;
+            ++i;
+        }
+        //cur holds tail
+        tmp.next.next = cur;
+        tmp.next = prev;
+        return fakeHead.next;
+    }
+
     static class ListNode {
         int val;
         ListNode next;
