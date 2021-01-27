@@ -133,6 +133,25 @@ public class TreeNodeProblems {
         }
         return list;
     }
+
+    public Queue<String> music(Queue<String> q, int k){
+        if(null == q || q.isEmpty())
+            return null;
+
+        int i = 1;
+        Queue<String> tmp = new LinkedList<>();
+        while( i < k){
+            tmp.add(q.poll());
+            ++i;
+        }
+        String v = q.poll();
+        ++i;
+        while(!q.isEmpty()){
+            tmp.add(q.poll());
+        }
+        tmp.add(v);
+        return tmp;
+    }
 }
 
 class TreeNode {

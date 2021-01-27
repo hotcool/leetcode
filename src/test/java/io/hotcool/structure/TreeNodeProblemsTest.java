@@ -2,6 +2,9 @@ package io.hotcool.structure;
 
 import org.junit.Test;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 import static org.junit.Assert.*;
 
 public class TreeNodeProblemsTest {
@@ -14,6 +17,24 @@ public class TreeNodeProblemsTest {
 
         TreeNodeProblems tp = new TreeNodeProblems();
         System.out.println(tp.isValidBST(r));
+    }
+
+    @Test
+    public void testMu(){
+        Queue<String> q = new LinkedList<>();
+        q.add("A");
+        q.add("B");
+        q.add("C");
+        q.add("D");
+        q.add("E");
+        q.add("F");
+        q.add("G");
+        q.add("H");
+        q.add("I");
+        q.add("J");
+        System.out.println(q);
+        TreeNodeProblems p = new TreeNodeProblems();
+        System.out.println(p.music(q, 3));
     }
 
 }
